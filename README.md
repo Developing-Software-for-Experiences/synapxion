@@ -8,7 +8,7 @@ Este **README.md** documenta la estructura, los proyectos y las responsabilidade
 
 | **Repositorio**           | **Tipo** | **Proyecto principal**     | **Descripción corta**                     |
 | ------------------------- | -------- | -------------------------- | ----------------------------------------- |
-| synapxion/synapxion-web   | web      | Aplicación UI (Godot + C#) | Interfaz principal empaquetada para venta |
+| synapxion/synapxion-app   | app      | Aplicación UI (Godot + C#) | Interfaz principal empaquetada para venta |
 | synapxion/synapxion-train | train    | Entrenador NLP (PyTorch)   | Entrenamiento y scripts de modelos NLP    |
 | synapxion/synapxion-site  | site     | Sitio web (Vue + Vite)     | Portal público y panel de documentación   |
 | synapxion/synapxion-pack  | pack     | Instalador y empaquetado   | Creación de instaladores multiplataforma  |
