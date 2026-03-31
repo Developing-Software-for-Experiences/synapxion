@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f8f2ca72-bf1d-46b4-b5c8-897f175fbddb</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>synapxion_train.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,33 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="synapxion_train.py" />
+    <Compile Include="generate\text_generate.py" />
+    <Compile Include="generate\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="main.py" />
+    <Compile Include="models\baseModel.py" />
+    <Compile Include="models\gptMini.py" />
+    <Compile Include="models\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="training\train.py" />
+    <Compile Include="training\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="utils\bin_dataset.py" />
+    <Compile Include="utils\bin_loader.py" />
+    <Compile Include="utils\silabificador.py" />
+    <Compile Include="utils\tokenizer.py" />
+    <Compile Include="utils\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="generate\" />
+    <Folder Include="models\" />
+    <Folder Include="training\" />
+    <Folder Include="utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

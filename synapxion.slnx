@@ -45,10 +45,8 @@
     <Platform Project="AnyCPU" />
     <Build Project="false" />
   </Project>
-  <Project Path="synapxion-utils/synapxion-utils.vcxproj" Id="307dc5a4-5143-4737-bb8e-acb2999b8e71">
+  <Project Path="synapxion-utils/synapxion-utils.csproj" Id="a5097aba-d457-484f-bbd6-a27cb775bd84">
     <BuildType Solution="ExportDebug|*" Project="Release" />
     <BuildType Solution="ExportRelease|*" Project="Release" />
-    <Platform Solution="*|ARM" Project="x64" />
-    <Platform Solution="*|ARM64" Project="x64" />
   </Project>
 </Solution>
