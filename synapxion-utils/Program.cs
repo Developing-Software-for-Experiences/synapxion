@@ -10,13 +10,21 @@ class Program
     static void Main()
     {
         string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-
         string dataDir = Path.Combine(baseDir, "DataSets");
         string outputDir = Path.Combine(baseDir, "Resultados");
-        string vocabPath = Path.Combine(baseDir, "Resultados/vocab.json");
+        string vocabPath = Path.Combine(outputDir, "vocab.json");
 
         Directory.CreateDirectory(dataDir);
         Directory.CreateDirectory(outputDir);
+
+        Console.Write("Modo (normal/debug): ");
+        var mode = Console.ReadLine()?.ToLower();
+
+        if (mode == "debug")
+        {
+            Rudwolf.Debug.DebugProgram.Run();
+            return;
+        }
 
         Console.WriteLine("=== Generador de Dataset (.bin) ===\n");
 
@@ -31,11 +39,8 @@ class Program
         }
 
         Console.WriteLine("Archivos disponibles:\n");
-
         for (int i = 0; i < files.Count; i++)
-        {
             Console.WriteLine($"[{i}] {Path.GetFileName(files[i])}");
-        }
 
         Console.WriteLine("\nSelecciona archivos (ej: 0,1,2) o escribe 'all': ");
         string? input = Console.ReadLine();
@@ -48,13 +53,14 @@ class Program
         }
         else
         {
-            var indexes = input.Split(',', StringSplitOptions.RemoveEmptyEntries);
+            var indexes = input?.Split(',', StringSplitOptions.RemoveEmptyEntries);
 
-            foreach (var idx in indexes)
+            if (indexes != null)
             {
-                if (int.TryParse(idx.Trim(), out int i) && i >= 0 && i < files.Count)
+                foreach (var idx in indexes)
                 {
-                    selectedFiles.Add(files[i]);
+                    if (int.TryParse(idx.Trim(), out int i) && i >= 0 && i < files.Count)
+                        selectedFiles.Add(files[i]);
                 }
             }
         }
@@ -65,40 +71,99 @@ class Program
             return;
         }
 
-        Console.WriteLine("\nConstruyendo vocabulario...");
+        // =========================
+        // 🔹 SYLLABLE TOKENIZER
+        // =========================
+        var syllableTokenizer = new SyllableTokenizer();
 
-        var tokenizer = new SyllableTokenizer();
-
-        Console.WriteLine("\nConstruyendo vocabulario (modo streaming)...");
-
-        IEnumerable<string> StreamAllText()
+        if (File.Exists(vocabPath))
         {
-            foreach (var file in selectedFiles)
+            Console.WriteLine("\nCargando vocabulario existente...");
+            syllableTokenizer.LoadVocab(vocabPath);
+            Console.WriteLine("✔ vocab.json cargado");
+        }
+        else
+        {
+            Console.WriteLine("\nConstruyendo vocabulario...");
+
+            IEnumerable<string> StreamAllText()
             {
-                foreach (var text in LoadFormattedText(file))
+                foreach (var file in selectedFiles)
                 {
-                    yield return text;
+                    var ext = Path.GetExtension(file).ToLower();
+
+                    if (ext == ".txt")
+                    {
+                        using var reader = new StreamReader(file, Encoding.UTF8);
+                        string? line;
+
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            if (!string.IsNullOrWhiteSpace(line))
+                                yield return line + " <EOS> <NEWLINE>";
+                        }
+                    }
+                    else if (ext == ".csv" || ext == ".tsv")
+                    {
+                        var separator = ext == ".tsv" ? '\t' : ',';
+                        using var reader = new StreamReader(file, Encoding.UTF8);
+
+                        reader.ReadLine(); // header
+
+                        string? line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            if (!string.IsNullOrWhiteSpace(line))
+                                yield return line + " <EOS> <NEWLINE>";
+                        }
+                    }
                 }
             }
+
+            var allText = StreamAllText();
+            syllableTokenizer.BuildVocab(allText);
+
+            syllableTokenizer.SaveVocabHybrid(vocabPath);
+            Console.WriteLine("✔ vocab.json generado");
         }
 
-        tokenizer.BuildVocab(StreamAllText());
-        tokenizer.SaveVocab(vocabPath);
+        // 🔥 IMPORTANTE
+        syllableTokenizer.AllowWholeWordTokens = false;
 
-        Console.WriteLine("vocab.json generado");
+        // =========================
+        // 🔹 BPE (INT BASED)
+        // =========================
+        var bpeRules = new List<BpeTokenizer.BpeRule>();
+        var bpe = new BpeTokenizer(bpeRules);
 
+        // =========================
+        // 🔹 HYBRID TOKENIZER
+        // =========================
+        var tokenizer = new HybridTokenizer(
+            syllableTokenizer,
+            bpe,
+            syllableTokenizer.GetVocab()
+        );
+
+        // =========================
+        // 🔹 BUILDER
+        // =========================
         var builder = new BinDatasetBuilder(tokenizer);
 
         foreach (var file in selectedFiles)
         {
             string name = Path.GetFileNameWithoutExtension(file);
-
             string outBin = Path.Combine(outputDir, name + ".bin");
             string outIdx = Path.Combine(outputDir, name + ".idx");
 
+            Console.WriteLine("\n¿Usar Streaming? (s/n): ");
+            string? streams = Console.ReadLine();
+
             Console.WriteLine($"\nProcesando: {name}");
 
-            builder.Build(file, outBin, outIdx);
+            bool useStreaming = streams?.ToLower() == "s";
+
+            builder.Build(file, outBin, outIdx, useStreaming);
 
             Console.WriteLine($"✔ Generado: {name}.bin / {name}.idx");
         }
@@ -106,53 +171,5 @@ class Program
         Console.WriteLine("\n✔ Todo terminado.");
         Console.WriteLine("Presiona una tecla para salir...");
         Console.ReadKey();
-    }
-
-    // 🔹 Reutilizamos misma lógica que tu builder
-    static IEnumerable<string> LoadFormattedText(string path)
-    {
-        var ext = Path.GetExtension(path).ToLower();
-
-        if (ext == ".txt")
-        {
-            yield return File.ReadAllText(path, Encoding.UTF8);
-            yield break;
-        }
-
-        var separator = ext == ".tsv" ? '\t' : ',';
-
-        using var reader = new StreamReader(path, Encoding.UTF8);
-
-        var header = reader.ReadLine();
-        if (header == null) yield break;
-
-        var columns = header.Split(separator);
-
-        int q = Array.IndexOf(columns, "question");
-        int t = Array.IndexOf(columns, "think");
-        int a = Array.IndexOf(columns, "answer");
-
-        while (!reader.EndOfStream)
-        {
-            var line = reader.ReadLine();
-            if (string.IsNullOrWhiteSpace(line)) continue;
-
-            var cols = line.Split(separator);
-
-            var parts = new List<string>();
-
-            if (q >= 0 && q < cols.Length)
-                parts.Add("<PROMPT> " + cols[q]);
-
-            if (t >= 0 && t < cols.Length)
-                parts.Add("<THINK> " + cols[t]);
-
-            if (a >= 0 && a < cols.Length)
-                parts.Add("<ANSWER> " + cols[a]);
-
-            var finalText = string.Join(" ", parts) + " <EOS> <NEWLINE>";
-
-            yield return finalText;
-        }
     }
 }

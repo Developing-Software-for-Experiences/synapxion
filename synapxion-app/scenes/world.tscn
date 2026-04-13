@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://ueaad6xdssey"]
+
+[ext_resource type="PackedScene" uid="uid://syn1qu5xm6ko" path="res://scenes/cerebrin.tscn" id="1_nnsk1"]
+[ext_resource type="PackedScene" uid="uid://coenq3a7b7k0t" path="res://scenes/ui.tscn" id="1_rwgxs"]
+
+[sub_resource type="Environment" id="Environment_rwgxs"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rwgxs"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4wyf3"]
+size = Vector3(2, 1, 2)
+
+[node name="World" type="Node3D" unique_id=1233806953]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1954911939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+environment = SubResource("Environment_rwgxs")
+
+[node name="Cerebrin" parent="." unique_id=172045337 instance=ExtResource("1_nnsk1")]
+
+[node name="UI" parent="Cerebrin" unique_id=824382099 instance=ExtResource("1_rwgxs")]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=465530245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_rwgxs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1482241949]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=725945026]
+shape = SubResource("BoxShape3D_4wyf3")

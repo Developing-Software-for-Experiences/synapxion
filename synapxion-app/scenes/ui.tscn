@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://coenq3a7b7k0t"]
+
+[node name="UI" type="Control" unique_id=824382099]
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Top" type="BoxContainer" parent="." unique_id=1161400954]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Button" type="Button" parent="Top" unique_id=837557099]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Exit"

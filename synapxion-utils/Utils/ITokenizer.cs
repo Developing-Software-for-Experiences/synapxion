@@ -9,5 +9,11 @@ namespace Rudwolf.Utils
         int PadTokenId { get; }
         int BosTokenId { get; }
         int EosTokenId { get; }
+
+        // 🔥 AGREGA ESTO:
+        int TokenToId(string token);
+        int UnkTokenId { get; }
+
+        void EncodeToStream(ReadOnlySpan<char> text, Action<int> emit);
     }
 }

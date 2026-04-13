@@ -3,18 +3,40 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
-    <RootNamespace>synapxion_utils</RootNamespace>
+    <RootNamespace>Rudwolf</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <ApplicationIcon>Resources\Alegre.ico</ApplicationIcon>
+    <Company>Developing Sorftware for Experiences</Company>
+    <Authors>Monrise Rudwolf</Authors>
+    <PackageIcon>7c1ad44b8f3fef370af822e4526e8a96.jpg</PackageIcon>
+    <NeutralLanguage>es-MX</NeutralLanguage>
+    <AssemblyName>Prexo</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>embedded</DebugType>
+    <IsAotCompatible>True</IsAotCompatible>
+    <IsTrimmable>True</IsTrimmable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>embedded</DebugType>
+    <IsAotCompatible>True</IsAotCompatible>
+    <IsTrimmable>True</IsTrimmable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DataSets\" />
-    <Folder Include="Resultados\" />
+    <None Include="C:\Users\Monrise\Pictures\7c1ad44b8f3fef370af822e4526e8a96.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <Content Include="Resources\Alegre.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" GeneratePathProperty="true" />
+    <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.3" GeneratePathProperty="true" />
   </ItemGroup>
 
 </Project>

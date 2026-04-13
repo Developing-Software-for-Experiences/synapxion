@@ -1,113 +1,110 @@
-# utils/silabificador.py
-
-class Silabificador:
-
-    VOWELS = set("aeiouáéíóúü")
-    STRONG_VOWELS = set("aáeéoó")
-    WEAK_VOWELS = set("iíuúü")
-
-    INSEPARABLE_GROUPS = {
-        "br", "bl", "cr", "cl", "dr",
-        "fr", "fl", "gr", "gl",
-        "pr", "pl", "tr"
-    }
+class SilabificadorFast:
 
     @staticmethod
-    def is_vowel(c):
-        return c in Silabificador.VOWELS
+    def is_vowel(c: str) -> bool:
+        return c in "aeiouáéíóúüAEIOUÁÉÍÓÚÜ"
 
     @staticmethod
-    def is_strong(c):
-        return c in Silabificador.STRONG_VOWELS
+    def is_strong(c: str) -> bool:
+        return c in "aáeéoóAÁEÉOÓ"
 
     @staticmethod
-    def is_weak(c):
-        return c in Silabificador.WEAK_VOWELS
+    def is_weak(c: str) -> bool:
+        return c in "iíuúüIÍUÚÜ"
 
     @staticmethod
-    def has_accent(c):
-        return c in "áéíóú"
+    def has_accent(c: str) -> bool:
+        return c in "áéíóúÁÉÍÓÚ"
 
-    # ------------------------
-    # SPLIT INTO SYLLABLES
-    # ------------------------
     @staticmethod
-    def split_into_syllables(word):
+    def is_inseparable(c1: str, c2: str) -> bool:
+        pair = (c1.lower(), c2.lower())
+        return pair in {
+            ('b','r'), ('b','l'),
+            ('c','r'), ('c','l'),
+            ('d','r'),
+            ('f','r'), ('f','l'),
+            ('g','r'), ('g','l'),
+            ('p','r'), ('p','l'),
+            ('t','r')
+        }
+
+    # 🔥 CLON DIRECTO DEL ALGORITMO C#
+    @staticmethod
+    def split_into_syllables(word: str):
         syllables = []
-        current = []
 
-        word = word.lower()
+        start = 0
         i = 0
         length = len(word)
 
         while i < length:
-            current.append(word[i])
+            c = word[i]
+            c_lower = c.lower()
 
-            if Silabificador.is_vowel(word[i]):
-                next_idx = i + 1
+            if not SilabificadorFast.is_vowel(c_lower):
+                i += 1
+                continue
 
-                # 🔹 HIATO / DIPTONGO
-                if next_idx < length and Silabificador.is_vowel(word[next_idx]):
-                    v1 = word[i]
-                    v2 = word[next_idx]
+            next_i = i + 1
 
+            # =========================
+            # DIPTONGO / HIATO
+            # =========================
+            if next_i < length:
+                v1 = c_lower
+                v2 = word[next_i].lower()
+
+                if SilabificadorFast.is_vowel(v2):
                     hiato = (
-                        (Silabificador.is_strong(v1) and Silabificador.is_strong(v2)) or
-                        (Silabificador.is_strong(v1) and Silabificador.is_weak(v2) and Silabificador.has_accent(v2)) or
-                        (Silabificador.is_weak(v1) and Silabificador.is_strong(v2) and Silabificador.has_accent(v1))
+                        (SilabificadorFast.is_strong(v1) and SilabificadorFast.is_strong(v2)) or
+                        (SilabificadorFast.is_strong(v1) and SilabificadorFast.is_weak(v2) and SilabificadorFast.has_accent(v2)) or
+                        (SilabificadorFast.is_weak(v1) and SilabificadorFast.is_strong(v2) and SilabificadorFast.has_accent(v1))
                     )
 
                     if not hiato:
-                        # Diptongo → no cortar
-                        current.append(word[next_idx])
-                        i += 1
+                        i += 1  # 🔥 saltar como en C#
 
-                # 🔹 CONTAR CONSONANTES
-                consonant_count = 0
-                j = i + 1
+            # =========================
+            # CONTAR CONSONANTES
+            # =========================
+            consonants = 0
+            j = i + 1
 
-                while j < length and not Silabificador.is_vowel(word[j]):
-                    consonant_count += 1
-                    j += 1
+            while j < length and not SilabificadorFast.is_vowel(word[j].lower()):
+                consonants += 1
+                j += 1
 
-                if consonant_count == 1:
-                    syllables.append("".join(current))
-                    current = []
+            # =========================
+            # REGLAS DE CORTE
+            # =========================
+            if consonants == 1:
+                syllables.append(word[start:i+1])
+                start = i + 1
 
-                elif consonant_count == 2:
-                    group = word[i+1:i+3]
+            elif consonants == 2:
+                c1 = word[i + 1].lower()
+                c2 = word[i + 2].lower()
 
-                    if group in Silabificador.INSEPARABLE_GROUPS:
-                        syllables.append("".join(current))
-                        current = []
-                    else:
-                        current.append(word[i+1])
-                        syllables.append("".join(current))
-                        current = []
-                        i += 1
-
-                elif consonant_count > 2:
-                    current.append(word[i+1])
-                    syllables.append("".join(current))
-                    current = []
+                if SilabificadorFast.is_inseparable(c1, c2):
+                    syllables.append(word[start:i+1])
+                    start = i + 1
+                else:
+                    syllables.append(word[start:i+2])
+                    start = i + 2
                     i += 1
+
+            elif consonants > 2:
+                syllables.append(word[start:i+2])
+                start = i + 2
+                i += 1
 
             i += 1
 
-        if current:
-            syllables.append("".join(current))
+        # =========================
+        # RESTO FINAL
+        # =========================
+        if start < length:
+            syllables.append(word[start:])
 
         return syllables
-
-    # ------------------------
-    # JOIN SYLLABLES
-    # ------------------------
-    @staticmethod
-    def join_syllables(syllables):
-        if not syllables:
-            return ""
-        return "".join(syllables)
-
-
-
-
