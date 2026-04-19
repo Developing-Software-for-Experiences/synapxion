@@ -12,6 +12,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BAvatar: typeof import('bootstrap-vue-next/components/BAvatar')['BAvatar']
     BButton: typeof import('bootstrap-vue-next/components/BButton')['BButton']
     BCollapse: typeof import('bootstrap-vue-next/components/BCollapse')['BCollapse']
     BDropdownItem: typeof import('bootstrap-vue-next/components/BDropdown')['BDropdownItem']
@@ -29,6 +30,8 @@ declare module 'vue' {
     BPlaceholder: typeof import('bootstrap-vue-next/components/BPlaceholder')['BPlaceholder']
     BPlaceholderCard: typeof import('bootstrap-vue-next/components/BPlaceholder')['BPlaceholderCard']
     BPlaceholderTable: typeof import('bootstrap-vue-next/components/BPlaceholder')['BPlaceholderTable']
+    IBiActivity: typeof import('~icons/bi/activity')['default']
+    IBiTranslate: typeof import('~icons/bi/translate')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
@@ -39,6 +42,7 @@ declare module 'vue' {
 
 // For TSX support
 declare global {
+  const BAvatar: typeof import('bootstrap-vue-next/components/BAvatar')['BAvatar']
   const BButton: typeof import('bootstrap-vue-next/components/BButton')['BButton']
   const BCollapse: typeof import('bootstrap-vue-next/components/BCollapse')['BCollapse']
   const BDropdownItem: typeof import('bootstrap-vue-next/components/BDropdown')['BDropdownItem']
@@ -56,6 +60,8 @@ declare global {
   const BPlaceholder: typeof import('bootstrap-vue-next/components/BPlaceholder')['BPlaceholder']
   const BPlaceholderCard: typeof import('bootstrap-vue-next/components/BPlaceholder')['BPlaceholderCard']
   const BPlaceholderTable: typeof import('bootstrap-vue-next/components/BPlaceholder')['BPlaceholderTable']
+  const IBiActivity: typeof import('~icons/bi/activity')['default']
+  const IBiTranslate: typeof import('~icons/bi/translate')['default']
   const RouterLink: typeof import('vue-router')['RouterLink']
   const RouterView: typeof import('vue-router')['RouterView']
 }
