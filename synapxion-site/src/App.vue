@@ -1,11 +1,21 @@
-<script setup lang="ts"></script>
-
+<!-- App.vue -->
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <BApp>
+    <header>
+      <NavBar />
+    </header>
+    <!-- Your application content -->
+    <main>
+      <router-view />
+    </main>
+    <footer>
+      <FootBar />
+    </footer>
+  </BApp>
 </template>
 
-<style scoped></style>
+<script setup lang="ts">
+import {BApp} from 'bootstrap-vue-next'
+import NavBar from './views/navBar.vue';
+import FootBar from './views/footBar.vue';
+</script>
