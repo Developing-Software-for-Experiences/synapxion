@@ -1,2 +1,41 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 @import '../../node_modules/bootstrap-icons/font/bootstrap-icons.scss';
+
+:root,
+[data-bs-theme='light'] {
+  /* Colores principales de la paleta */
+  --color-bg: #ffffff; /* Fondo principal: Beige/Gris claro */
+  --color-text: #000000; /* Texto principal: Negro */
+  --color-card: #ffffff; /* Fondo de tarjetas: Blanco */
+  --color-accent: #a30e1a; /* Acento principal: Rojo Oscuro (Institucional) */
+  --color-accent-secondary: #ffc83a; /* Acento secundario: Amarillo Brillante (Institucional) */
+  --color-blue: #1e3c93; /* Azul: Azul Oscuro (Primario para botones/bordes) */
+  --color-orange: #fe7200; /* Naranja: (Secundario para botones/bordes) */
+
+  /* Variables específicas (mapeo) */
+  --bg-color: var(--color-bg);
+  --text-color: var(--color-text);
+  --card-bg: var(--color-card);
+  --card-hover: #f0f0f0;
+  --primary: var(--color-blue);
+  --accent: var(--color-accent-secondary);
+
+  /* Variables de formularios y alertas */
+  --card-border: var(--color-blue);
+  --input-bg: var(--color-card);
+  --input-border: #ccc3af;
+  --alert-bg: var(--color-accent-secondary);
+  --alert-text: var(--color-text);
+}
+
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--color-text);
+  transition:
+    background-color 0.8s,
+    color 0.8s;
+}
