@@ -1,5 +1,6 @@
 <template>
-  <BNavbar v-b-color-mode="'light'" toggleable="lg" variant="secondary">
+  <BNavbar class="navbar" toggleable="lg" type="light">
+    <img src="/I__B.png" width="8%" class="d-inline-block align-top" alt="Logo">
     <BNavbarBrand href="#navbar-overview">SynapXion</BNavbarBrand>
     <BNavbarToggle target="nav-collapse" />
     <BCollapse id="nav-collapse" is-nav>
@@ -8,7 +9,7 @@
         <BNavItem href="#navbar-docs">Docs</BNavItem>
         <BNavItem href="#navbar-blogs">Blogs</BNavItem>
       </BNavbarNav>
-      <!-- Right aligned nav items -->
+
       <BNavbarNav class="ms-auto mb-2 mb-lg-0">
         <BNavItemDropdown right>
           <template #button-content>
@@ -18,7 +19,7 @@
           <BDropdownItem>EN</BDropdownItem>
         </BNavItemDropdown>
         <BNavItemDropdown right>
-          <!-- Using 'button-content' slot -->
+
           <template #button-content>
             <BAvatar size="md" />
           </template>
@@ -33,3 +34,22 @@
     </BCollapse>
   </BNavbar>
 </template>
+
+<style scoped>
+.navbar {
+  background-color:  #fa4f84;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.navbar-overview {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.nav-collapse {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+</style>
