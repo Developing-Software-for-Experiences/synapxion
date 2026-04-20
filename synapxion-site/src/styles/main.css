@@ -1,3 +1,8 @@
 .navbar-overview {
   background-color: var(--color-menucard);
 }
+
+.nav-collapse {
+  background-color: var(--color-menucard);
+}
+
