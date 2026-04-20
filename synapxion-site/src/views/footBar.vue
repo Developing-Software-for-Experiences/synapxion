@@ -1,6 +1,6 @@
 <!-- FootBar -->
 <template>
-  <BNavbar v-b-color-mode="'dark'" toggleable="sm" variant="secondary">
+  <BNavbar v-b-color-mode="'#fa4f84'" toggleable="sm" variant="secondary">
     <BNavbarToggle target="nav-text-collapse" />
     <BNavbarBrand>SynapXion</BNavbarBrand>
     <BCollapse id="nav-text-collapse" is-nav>
