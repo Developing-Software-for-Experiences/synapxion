@@ -16,8 +16,6 @@
           </template>
           <BDropdownItem>ES</BDropdownItem>
           <BDropdownItem>EN</BDropdownItem>
-          <BDropdownItem>RU</BDropdownItem>
-          <BDropdownItem>FA</BDropdownItem>
         </BNavItemDropdown>
         <BNavItemDropdown right>
           <!-- Using 'button-content' slot -->
@@ -29,7 +27,7 @@
         </BNavItemDropdown>
       </BNavbarNav>
       <BNavForm class="d-flex">
-        <BFormInput class="me-2" placeholder="Search" />
+        <BFormInput class="me-2" placeholder="Buscar" />
         <BButton type="submit" variant="outline-success">Buscar</BButton>
       </BNavForm>
     </BCollapse>
