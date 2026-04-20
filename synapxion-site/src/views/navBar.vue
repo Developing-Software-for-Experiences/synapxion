@@ -4,9 +4,9 @@
     <BNavbarToggle target="nav-collapse" />
     <BCollapse id="nav-collapse" is-nav>
       <BNavbarNav>
-        <BNavItem href="#navbar-overview">Descargar</BNavItem>
-        <BNavItem href="#navbar-overview">Docs</BNavItem>
-        <BNavItem href="#navbar-overview">Blogs</BNavItem>
+        <BNavItem href="#navbar-download">Descargar</BNavItem>
+        <BNavItem href="#navbar-docs">Docs</BNavItem>
+        <BNavItem href="#navbar-blogs">Blogs</BNavItem>
       </BNavbarNav>
       <!-- Right aligned nav items -->
       <BNavbarNav class="ms-auto mb-2 mb-lg-0">
