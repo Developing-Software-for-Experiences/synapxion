@@ -1,5 +1,5 @@
 <template>
-  <BNavbar v-b-color-mode="'dark'" toggleable="lg" variant="secondary">
+  <BNavbar v-b-color-mode="'light'" toggleable="lg" variant="secondary">
     <BNavbarBrand href="#navbar-overview">SynapXion</BNavbarBrand>
     <BNavbarToggle target="nav-collapse" />
     <BCollapse id="nav-collapse" is-nav>
