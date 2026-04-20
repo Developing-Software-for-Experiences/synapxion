@@ -24,13 +24,13 @@
           <template #button-content>
             <BAvatar size="md" />
           </template>
-          <BDropdownItem>Profile</BDropdownItem>
-          <BDropdownItem>Sign Out</BDropdownItem>
+          <BDropdownItem>Cuenta</BDropdownItem>
+          <BDropdownItem>Cerrar sesión</BDropdownItem>
         </BNavItemDropdown>
       </BNavbarNav>
       <BNavForm class="d-flex">
         <BFormInput class="me-2" placeholder="Search" />
-        <BButton type="submit" variant="outline-success">Search</BButton>
+        <BButton type="submit" variant="outline-success">Buscar</BButton>
       </BNavForm>
     </BCollapse>
   </BNavbar>
