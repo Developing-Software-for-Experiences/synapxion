@@ -21,7 +21,7 @@
         <BNavItemDropdown right>
 
           <template #button-content>
-            <BAvatar size="md" />
+            <BAvatar size="md" class="mb-2"/>
           </template>
           <BDropdownItem>Cuenta</BDropdownItem>
           <BDropdownItem>Cerrar sesión</BDropdownItem>
@@ -60,4 +60,5 @@
   color: #ffffff;
   border-color: #ffffff;
 }
+
 </style>
