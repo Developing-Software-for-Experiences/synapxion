@@ -4,6 +4,8 @@
     <h5 class="card-subtitle mb-2 text-muted text-center">¡Nuestro asistente Syna esta listo para servirte!</h5>
   </div>
 
+  <div class="c"> </div>
+
   <div class="content-about">
     <p class="text">¡Nuestro asistente Syna esta listo para servirte!</p>
   </div>
@@ -38,7 +40,7 @@
     </div>
   </div>
 
-<div class="c"> </div>
+<div class="a"> </div>
 </template>
 
 <style scoped>
@@ -48,7 +50,7 @@
 
 .titlecard {
   margin-top: 30px;
-  margin-bottom: 55px;
+  margin-bottom: 60px;
   border-color: #ffffff;
 }
 
@@ -68,6 +70,11 @@
 }
 
 .c {
+  padding: 10px;
+  background-color: #449fe6;
+}
+
+.a {
   padding: 5px;
   background-color: #f9ae2f;
 }

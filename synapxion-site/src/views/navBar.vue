@@ -21,38 +21,16 @@
         <BNavItemDropdown right>
 
           <template #button-content>
-            <BAvatar size="md" class="mb-2"/>
+            <BAvatar size="md" class="ms-auto "/>
           </template>
           <BDropdownItem>Cuenta</BDropdownItem>
           <BDropdownItem>Cerrar sesión</BDropdownItem>
         </BNavItemDropdown>
       </BNavbarNav>
-      <BNavForm class="d-flex">
+      <BNavForm class="d-flex ">
         <BFormInput class="me-2" placeholder="Buscar" />
         <BButton type="submit" variant="outline-success">Buscar</BButton>
       </BNavForm>
     </BCollapse>
   </BNavbar>
 </template>
-
-<style scoped>
-.navbar {
-  background-color: #fa4f84;
-  font-size: 18px;
-}
-
-.navbar .navbar-brand,
-.navbar .nav-link {
-  color: #ffffff !important;
-}
-
-.navbar .dropdown-item {
-  color: #ffffff !important;
-}
-
-.navbar .btn {
-  color: #ffffff;
-  border-color: #ffffff;
-}
-
-</style>
