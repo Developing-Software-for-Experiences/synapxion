@@ -1,13 +1,15 @@
 <template>
   <div class="titlecard container-sm">
     <img class="rounded mx-auto d-block" width="70%" src="/SynapXion.png" alt="Synapxion">
-    <h5 class="card-subtitle mb-2 text-muted text-center">¡Nuestro asistente Syna esta listo para servirte!</h5>
+    <h5 class="card-subtitle mb-2 text-muted text-center">¡Nuestro asistente Syna está listo para servirte!</h5>
   </div>
 
   <div class="c"> </div>
 
   <div class="content-about">
-    <p class="text">¡Nuestro asistente Syna esta listo para servirte!</p>
+    <p class="text">Syna es tu nuevo asistente inteligente integral, actúa como un cerebro organizativo para tu equipo de computo, encargado de automatizar la organización de tus archivos, resolver tus dudas y solucionar problemas técnicos de tu computadora, optimizando tu flujo de trabajo de manera proactiva.</p>
+    <p class="text">Synapxion te devuelve el tiempo para que te concentres en lo importante.</p>
+
   </div>
 
   <div class="content-download">
@@ -17,7 +19,7 @@
       <div class="card text-center">
       <div class="card-body">
         <h5 class="card-title">Windows</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text">Descarga el instalador oficial para Windows. Compatible con Windows 10 y 11.</p>
         <a href="#" class="btn btn-primary">Descargar</a>
       </div>
       </div>
@@ -25,7 +27,7 @@
       <div class="card text-center">
       <div class="card-body">
         <h5 class="card-title">MacOS</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text">Descarga el instalador universal para el sistema operativo macOS.</p>
         <a href="#" class="btn btn-primary">Descargar</a>
       </div>
       </div>
@@ -33,7 +35,7 @@
       <div class="card text-center">
       <div class="card-body">
         <h5 class="card-title">Linux</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text">Descarga el paquete oficial de instalación para distribuciones Linux.</p>
         <a href="#" class="btn btn-primary">Descargar</a>
       </div>
       </div>
