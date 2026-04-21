@@ -1,13 +1,13 @@
 <template>
   <BNavbar class="navbar" toggleable="lg" type="dark">
     <img src="/I__B.png" width="8%" class="d-inline-block align-top" alt="Logo">
-    <BNavbarBrand href="#navbar-overview">SynapXion</BNavbarBrand>
+    <BNavbarBrand href="#inicio">SynapXion</BNavbarBrand>
     <BNavbarToggle target="nav-collapse" />
     <BCollapse id="nav-collapse" is-nav>
       <BNavbarNav class="navitems">
-        <BNavItem href="#navbar-download">Descargar</BNavItem>
-        <BNavItem href="#navbar-docs">Docs</BNavItem>
-        <BNavItem href="#navbar-blogs">Blogs</BNavItem>
+        <BNavItem href="#descargar">Descargar</BNavItem>
+        <BNavItem href="#docs">Docs</BNavItem>
+        <BNavItem href="#blogs">Blogs</BNavItem>
       </BNavbarNav>
 
       <BNavbarNav class="ms-auto mb-2 mb-lg-0">
