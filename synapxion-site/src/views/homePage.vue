@@ -12,14 +12,15 @@
     <h2 class="title">Descargas</h2>
 
     <div class="card-deck">
-      <div class="card">
+      <div class="card text-center">
       <div class="card-body">
         <h5 class="card-title">Windows</h5>
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
         <a href="#" class="btn btn-primary">Descargar</a>
       </div>
       </div>
-      <div class="card">
+
+      <div class="card text-center">
       <div class="card-body">
         <h5 class="card-title">MacOS</h5>
         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -27,7 +28,7 @@
       </div>
       </div>
 
-      <div class="card">
+      <div class="card text-center">
       <div class="card-body">
         <h5 class="card-title">Linux</h5>
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -36,6 +37,7 @@
       </div>
     </div>
   </div>
+  
 <div class="c"> </div>
 </template>
 
