@@ -17,7 +17,7 @@
       <div class="card text-center">
       <div class="card-body">
         <h5 class="card-title">Windows</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
         <a href="#" class="btn btn-primary">Descargar</a>
       </div>
       </div>
@@ -33,7 +33,7 @@
       <div class="card text-center">
       <div class="card-body">
         <h5 class="card-title">Linux</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
         <a href="#" class="btn btn-primary">Descargar</a>
       </div>
       </div>
@@ -69,8 +69,14 @@
   background-color: #449fe6;
 }
 
+.card-body{
+  padding: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
 .c {
-  padding: 10px;
+  padding: 6px;
   background-color: #449fe6;
 }
 
