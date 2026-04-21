@@ -37,7 +37,7 @@
       </div>
     </div>
   </div>
-  
+
 <div class="c"> </div>
 </template>
 
@@ -61,7 +61,7 @@
 
 .content-download {
   padding-top: 25px;
-  padding-bottom: 30%;
+  height: 948px;
   padding-left: 30px;
   padding-right: 30px;
   background-color: #449fe6;
@@ -77,17 +77,22 @@
   border-color: #ffffff;
 }
 
-  .content-download {
+.titlecard img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.content-download {
+  background-image: url('Syna_.png');
   position: relative;
-  background-image: url('Nube.png');
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
-  padding: 40px;
 }
 
 .content-download::before {
   content: "";
-  position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   z-index: 0;
 }

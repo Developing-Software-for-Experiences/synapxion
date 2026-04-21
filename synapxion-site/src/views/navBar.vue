@@ -50,12 +50,6 @@
   color: #ffffff !important;
 }
 
-.navbar .form-control {
-  color: #ffffff;
-  background-color: transparent;
-  border: 1px solid #ffffff;
-}
-
 .navbar .btn {
   color: #ffffff;
   border-color: #ffffff;
