@@ -1,17 +1,16 @@
 [gd_scene format=3 uid="uid://syn1qu5xm6ko"]
 
-[ext_resource type="PackedScene" uid="uid://bsgdiom0s3mgm" path="res://models/syna.fbx" id="1_4isby"]
 [ext_resource type="Script" uid="uid://cqmh8uv8tyklh" path="res://source/Cerebrin.cs" id="1_kkfc3"]
+[ext_resource type="PackedScene" uid="uid://dislg3t1q22ds" path="res://models/syna_shading-e.vrm" id="2_kkfc3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4isby"]
-size = Vector3(0.69962883, 0.4100647, 0.75146484)
 
 [node name="Cerebrin" type="CharacterBody3D" unique_id=172045337]
 script = ExtResource("1_kkfc3")
 
-[node name="syna" parent="." unique_id=633939957 instance=ExtResource("1_4isby")]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -0.053364165, -0.19251083, -0.04444942)
-
 [node name="body" type="CollisionShape3D" parent="." unique_id=1490242061]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008843422, 0.03794861, 0.008056641)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0836525, 0)
 shape = SubResource("BoxShape3D_4isby")
+
+[node name="syna_shading-e" parent="." unique_id=1405657069 instance=ExtResource("2_kkfc3")]
+transform = Transform3D(-0.33, 0, -2.8849517e-08, 0, 0.33, 0, 2.8849517e-08, 0, -0.33, 0, 0, 0)

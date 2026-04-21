@@ -19,12 +19,10 @@ size = Vector3(2, 1, 2)
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1954911939]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 environment = SubResource("Environment_rwgxs")
-projection = 1
 
 [node name="Cerebrin" parent="." unique_id=172045337 instance=ExtResource("1_nnsk1")]
 
 [node name="UI" parent="Cerebrin" unique_id=824382099 instance=ExtResource("1_rwgxs")]
-visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=465530245]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

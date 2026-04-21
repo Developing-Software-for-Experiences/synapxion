@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://coenq3a7b7k0t"]
 
-[node name="UI" type="Control" unique_id=824382099]
+[ext_resource type="Script" uid="uid://cguephadax04k" path="res://source/Ui.cs" id="1_gdt2y"]
+[ext_resource type="Script" uid="uid://bqll335fobepk" path="res://addons/FreeControl/src/ArrangementContainers/Drawer/Drawer.gd" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://f4xii4ypu14i" path="res://source/Opciones.cs" id="1_yev5y"]
+[ext_resource type="Script" uid="uid://dl8gv5mo2s7ce" path="res://addons/FreeControl/src/ArrangementContainers/Carousel/Carousel.gd" id="2_x4jx1"]
+
+[node name="UI" type="Control" unique_id=824382099 node_paths=PackedStringArray("usrInput", "btnEnviar")]
 top_level = true
 layout_mode = 3
 anchors_preset = 15
@@ -11,15 +16,126 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+script = ExtResource("1_gdt2y")
+usrInput = NodePath("layout/bottomControl/usrInput")
+btnEnviar = NodePath("layout/bottomControl/btnEnviar")
 
-[node name="Top" type="BoxContainer" parent="." unique_id=1161400954]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
+[node name="background" type="VBoxContainer" parent="." unique_id=184474715]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 600.0
 grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Button" type="Button" parent="Top" unique_id=837557099]
-custom_minimum_size = Vector2(100, 0)
+[node name="body" type="HBoxContainer" parent="background" unique_id=421947509]
 layout_mode = 2
-text = "Exit"
+size_flags_vertical = 3
+
+[node name="bottomControl" type="HBoxContainer" parent="background" unique_id=654652959]
+layout_mode = 2
+
+[node name="Panel" type="ColorRect" parent="background/bottomControl" unique_id=1849471833]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.09923177, 0.09923177, 0.09923177, 1)
+
+[node name="layout" type="VBoxContainer" parent="." unique_id=23894606]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="body" type="HBoxContainer" parent="layout" unique_id=1216027114]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="opciones" type="VBoxContainer" parent="layout/body" unique_id=1582603509]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+script = ExtResource("1_yev5y")
+
+[node name="opcion 1" type="Button" parent="layout/body/opciones" unique_id=618697517]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Opcion"
+
+[node name="opcion 2" type="Button" parent="layout/body/opciones" unique_id=543538024]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Opcion"
+
+[node name="opcion 3" type="Button" parent="layout/body/opciones" unique_id=1753903808]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Opcion"
+
+[node name="opcion 4" type="Button" parent="layout/body/opciones" unique_id=2024469600]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Opcion"
+
+[node name="bottomControl" type="HBoxContainer" parent="layout" unique_id=911044029]
+layout_mode = 2
+
+[node name="usrInput" type="TextEdit" parent="layout/bottomControl" unique_id=191909442]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Escribe..."
+
+[node name="btnEnviar" type="Button" parent="layout/bottomControl" unique_id=109269572]
+layout_mode = 2
+text = "Enviar w"
+
+[node name="Drawer" type="Container" parent="." unique_id=1659114974]
+custom_minimum_size = Vector2(750, 496)
+layout_mode = 0
+offset_left = -750.0
+offset_bottom = 496.0
+script = ExtResource("1_nt7q6")
+drawer_angle = 0.0
+drawer_angle_axis_snap = false
+drawer_width_by_pixel = false
+drawer_width = 1.0
+drawer_height_by_pixel = false
+drawer_height = 1.0
+action_mode = 1
+open_margin = 0
+close_margin = -68
+allow_drag = 3
+smooth_drag = true
+drag_give = 0
+open_bounds = 4
+open_drag_threshold = 50
+close_bounds = 4
+close_drag_threshold = 50
+manual_drawer_translate = 0
+manual_drawer_ease = 0
+manual_drawer_duration = 0.2
+drag_drawer_translate = 0
+drag_drawer_ease = 0
+drag_drawer_duration = 0.2
+metadata/_custom_type_script = "uid://bqll335fobepk"
+
+[node name="Carousel" type="Container" parent="Drawer" unique_id=1887360991]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_x4jx1")
+item_size = Vector2(750, 500)
+item_seperation = 100.0
+carousel_angle = 90.0
+metadata/_custom_type_script = "uid://dl8gv5mo2s7ce"
+
+[node name="ColorRect" type="ColorRect" parent="Drawer/Carousel" unique_id=146688073]
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Drawer/Carousel" unique_id=1734956308]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Drawer/Carousel" unique_id=1847521777]
+layout_mode = 2
+color = Color(0.29469332, 0.00023045004, 0.91838664, 1)

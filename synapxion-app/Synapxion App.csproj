@@ -6,6 +6,6 @@
     <RootNamespace>SynapxionApp</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="source\" />
+    <PackageReference Include="LlmTornado.Contrib" Version="1.1.10" />
   </ItemGroup>
 </Project>
