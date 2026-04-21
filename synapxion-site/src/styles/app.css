@@ -1,2 +1,51 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 @import '../../node_modules/bootstrap-icons/font/bootstrap-icons.scss';
+
+:root,
+[data-bs-theme='light'] {
+  /* Colores principales de la paleta */
+  --color-bg: #ffffff; /* Fondo principal: Blanco */
+  --color-text: #000000; /* Texto principal: Negro */
+  --color-menucard: #fa4f84; /* Fondo de tarjeta menu: Rosa */
+  --color-accent: #449fe6; /* Acento principal: Celeste */
+  --color-accent-secondary: #f9ae2f; /* Acento secundario: Amarillo */
+  --color-darker: #030021; /* Azul muy oscuro */
+  --color-dark2: #1d1d3d; /* Azul oscuro */
+  --color-dark: #333351; /* Azul poco oscuro */
+
+  /* Variables específicas (mapeo) */
+  --bg-color: var(--color-bg);
+  --text-color: var(--color-text);
+  --card-bg: var(--color-bg);
+  --card-hover: var(--color-accent-secondary);
+  --primary: var(--color-accent);
+  --accent: var(--color-accent-secondary);
+
+  /* Variables de formularios y alertas */
+  --card-border: var(--color-darker);
+  --input-bg: var(--color-menucard);
+  --input-border: #ccc3af;
+  --alert-bg: var(--color-accent-secondary);
+  --alert-text: var(--color-text);
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--color-text);
+  transition:
+    background-color 0.8s,
+    color 0.8s;
+}

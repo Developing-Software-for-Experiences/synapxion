@@ -1,12 +1,19 @@
-<!-- FootBar -->
 <template>
-  <BNavbar v-b-color-mode="'dark'" toggleable="sm" variant="secondary">
+  <BNavbar class="footbar" toggleable="sm" type="light">
     <BNavbarToggle target="nav-text-collapse" />
-    <BNavbarBrand>SynapXion</BNavbarBrand>
+    <img src="/LOGO_B.png" width="120" height="120" class="d-inline-block align-top" alt="Logo">
     <BCollapse id="nav-text-collapse" is-nav>
       <BNavbarNav>
-        <BNavText>by Monrise el Rudolfo</BNavText>
+        <BNavText class="footbar">Desarrollado por Developing Software for Experiences (DSFE) | 2026</BNavText>
       </BNavbarNav>
     </BCollapse>
   </BNavbar>
 </template>
+
+<style scoped>
+.footbar {
+  background-color:  #fa4f84;
+  color: #ffffff;
+  font-size: 18px;
+}
+</style>
