@@ -5,7 +5,7 @@
       <NavBar />
     </header>
     <!-- Your application content -->
-    <main class="container-sm">
+    <main>
       <router-view />
     </main>
     <footer>

@@ -1,10 +1,10 @@
 <template>
-  <BNavbar class="navbar" toggleable="lg" type="light">
+  <BNavbar class="navbar" toggleable="lg" type="dark">
     <img src="/I__B.png" width="8%" class="d-inline-block align-top" alt="Logo">
     <BNavbarBrand href="#navbar-overview">SynapXion</BNavbarBrand>
     <BNavbarToggle target="nav-collapse" />
     <BCollapse id="nav-collapse" is-nav>
-      <BNavbarNav>
+      <BNavbarNav class="navitems">
         <BNavItem href="#navbar-download">Descargar</BNavItem>
         <BNavItem href="#navbar-docs">Docs</BNavItem>
         <BNavItem href="#navbar-blogs">Blogs</BNavItem>
@@ -42,14 +42,9 @@
   font-size: 18px;
 }
 
-.navbar-overview {
-  color: #ffffff;
-  font-size: 18px;
-}
-
-.nav-collapse {
-  color: #ffffff;
-  font-size: 18px;
+.navbar .nav-link,
+.navbar .navbar-brand {
+  color: white !important;
 }
 
 </style>
