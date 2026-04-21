@@ -37,14 +37,27 @@
 
 <style scoped>
 .navbar {
-  background-color:  #fa4f84;
-  color: #ffffff;
+  background-color: #fa4f84;
   font-size: 18px;
 }
 
-.navbar .nav-link,
-.navbar .navbar-brand {
-  color: white !important;
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: #ffffff !important;
 }
 
+.navbar .dropdown-item {
+  color: #ffffff !important;
+}
+
+.navbar .form-control {
+  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+}
+
+.navbar .btn {
+  color: #ffffff;
+  border-color: #ffffff;
+}
 </style>
